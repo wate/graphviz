@@ -5,13 +5,13 @@
  * The position cannot be set (see http://www.redmine.org/issues/14936 )
  */
 if (typeof(jsToolBar) != 'undefined') {
-    jsToolBar.prototype.elements.plantuml = {
+    jsToolBar.prototype.elements.graphviz = {
         type: 'button',
-        title: 'Add PlantUML diagramm',
+        title: 'Add Graphviz diagramm',
         fn: {
             wiki: function () {
-                // this.singleTag('{{plantuml(png)\n', '\n}}');
-                this.encloseLineSelection('{{plantuml(png)\n', '\n}}')
+                // this.singleTag('{{graphviz(png)\n', '\n}}');
+                this.encloseLineSelection('{{graphviz(png)\n', '\n}}')
             }
         }
     }

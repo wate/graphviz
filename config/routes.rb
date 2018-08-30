@@ -1,1 +1,1 @@
-get 'plantuml/:content_type/:filename', to: 'plantuml#convert'
+get 'graphviz/:content_type/:filename', to: 'graphviz#convert'

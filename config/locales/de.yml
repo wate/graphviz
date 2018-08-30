@@ -1,5 +1,5 @@
 de:
   plugin_settings: 'Plugin Einstellungen'
   cache_expiration: 'Cache Gültigkeit'
-  plantuml_binary: 'PlantUML Binärdatei'
+  graphviz_binary: 'Graphviz Binärdatei'
   allow_includes: 'Includes zulassen (ACHTUNG! Sicherheitsrisiko)'
