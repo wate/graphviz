@@ -85,8 +85,8 @@ EOF
     macro :graphviz do |obj, args, text|
       raise 'No Graphviz binary set.' if Setting.plugin_graphviz['graphviz_binary_default'].blank?
       raise 'No or bad arguments.' if args.size != 1
-      frmt = PlantumlHelper.check_format(args.first)
-      image = PlantumlHelper.graphviz(text, args.first)
+      frmt = GraphvizHelper.check_format(args.first)
+      image = GraphvizHelper.graphviz(text, args.first)
       image_tag "/graphviz/#{frmt[:type]}/#{image}#{frmt[:ext]}"
     end
   end
