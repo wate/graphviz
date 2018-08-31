@@ -24,13 +24,13 @@ module GraphvizHelper
     settings_binary = Setting.plugin_graphviz['graphviz_binary_default']
     if File.file?(graphviz_file(name, '.dot'))
       unless File.file?(graphviz_file(name, frmt[:ext]))
-        `"#{settings_binary}" -T "#{frmt[:type]}" "#{graphviz_file(name, '.dot')}"`
+        `"#{settings_binary}" -T "#{frmt[:type]}" "#{graphviz_file(name, '.dot')}" -o "#{graphviz_file(name, frmt[:ext])}"`
       end
     else
       File.open(graphviz_file(name, '.dot'), 'w') do |file|
         file.write sanitize_graphviz(text) + "\n"
       end
-      `"#{settings_binary}" -T "#{frmt[:type]}" "#{graphviz_file(name, '.dot')}"`
+      `"#{settings_binary}" -T "#{frmt[:type]}" #{graphviz_file(name, '.dot')} -o "#{graphviz_file(name, frmt[:ext])}"`
     end
     name
   end
