@@ -1,5 +1,6 @@
 ja:
-  plugin_settings: 'プラグインの設定'
-  cache_expiration: 'キャッシュの有効期限'
-  graphviz_binary: 'dotコマンドのパス'
-  allow_includes: '!includeを許可する(注記!:セキュリティ上のリスクがあります)'
+  label_plugin_settings: 'プラグインの設定'
+  label_allow_includes: '!includeを許可する(注意!:セキュリティリスク上のリスクがあります)'
+  label_cache_expiration: 'キャッシュの有効期限'
+  label_graphviz_binary: 'dotコマンドのパス'
+  text_cache_expiration_unit: '秒'
