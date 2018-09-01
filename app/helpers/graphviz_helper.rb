@@ -30,7 +30,7 @@ module GraphvizHelper
       File.open(graphviz_file(name, '.dot'), 'w') do |file|
         file.write sanitize_graphviz(text) + "\n"
       end
-      `"#{settings_binary}" -T "#{frmt[:type]}" #{graphviz_file(name, '.dot')} -o "#{graphviz_file(name, frmt[:ext])}"`
+      `"#{settings_binary}" -T "#{frmt[:type]}" "#{graphviz_file(name, '.dot')} "-o "#{graphviz_file(name, frmt[:ext])}"`
     end
     name
   end
