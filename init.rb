@@ -15,66 +15,12 @@ Redmine::Plugin.register :graphviz do
       Render Graphviz image.
       <pre>
       {{graphviz(png)
-      digraph g {
-        graph [
-          charset = "UTF-8";
-          label = "sample graph",
-          labelloc = "t",
-          labeljust = "c",
-          bgcolor = "#343434",
-          fontcolor = white,
-          fontsize = 18,
-          style = "filled",
-          rankdir = TB,
-          margin = 0.2,
-          splines = spline,
-          ranksep = 1.0,
-          nodesep = 0.9
-        ];
-
-        node [
-          colorscheme = "rdylgn11"
-          style = "solid,filled",
-          fontsize = 16,
-          fontcolor = 6,
-          fontname = "Migu 1M",
-          color = 7,
-          fillcolor = 11,
-          fixedsize = true,
-          height = 0.6,
-          width = 1.2
-        ];
-
-        edge [
-          style = solid,
-          fontsize = 14,
-          fontcolor = white,
-          fontname = "Migu 1M",
-          color = white,
-          labelfloat = true,
-          labeldistance = 2.5,
-          labelangle = 70
-        ];
-
-        // node define
-        alpha [shape = box];
-        beta [shape = box];
-        gamma [shape = Msquare];
-        delta [shape = box];
-        epsilon [shape = trapezium];
-        zeta [shape = Msquare];
-        eta;
-        theta [shape = doublecircle];
-
-        // edge define
-        alpha -> beta [label = "a-b", arrowhead = normal];
-        alpha -> gamma [label = "a-g"];
-        beta -> delta [label = "b-d"];
-        beta -> epsilon [label = "b-e", arrowhead = tee];
-        gamma -> zeta [label = "g-z"];
-        gamma -> eta [label = "g-e", style = dotted];
-        delta -> theta [arrowhead = crow];
-        zeta -> theta [arrowhead = crow];
+      digraph G {
+        未対応 -> 対応中 -> 対応済み -> 完了;
+        未対応 -> 破棄;
+        対応済み -> フィードバック;
+        フィードバック -> 対応中;
+        フィードバック -> 対応済み;
       }
       }}
       </pre>

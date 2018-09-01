@@ -17,13 +17,31 @@ This plugin will allow adding [Graphviz](https://www.graphviz.org/) diagrams int
 
 ```
 {{graphviz(png)
-  Bob -> Alice : hello
+digraph G {
+  graph [
+     rankdir = "TB"
+  ];
+  未対応 -> 対応中 -> 対応済み -> 完了;
+  未対応 -> 破棄;
+  対応済み -> フィードバック;
+  フィードバック -> 対応中;
+  フィードバック -> 対応済み;
+}
 }}
 ```
 
 ```
 {{graphviz(svg)
-  Bob -> Alice : hello
+digraph G {
+  graph [
+     rankdir = "LR"
+  ];
+  未対応 -> 対応中 -> 対応済み -> 完了;
+  未対応 -> 破棄;
+  対応済み -> フィードバック;
+  フィードバック -> 対応中;
+  フィードバック -> 対応済み;
+}
 }}
 ```
 
