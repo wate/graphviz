@@ -20,17 +20,16 @@ module GraphvizHelper
 
   def self.graphviz(text, args)
     frmt = check_format(args)
-    name = construct_cache_key(text)
     settings_binary = Setting.plugin_graphviz['graphviz_binary_default']
-    if File.file?(graphviz_file(name, '.dot'))
-      unless File.file?(graphviz_file(name, frmt[:ext]))
-        `"#{settings_binary}" -T "#{frmt[:type]}" "#{graphviz_file(name, '.dot')}" -o "#{graphviz_file(name, frmt[:ext])}"`
-      end
-    else
+    graph_text = sanitize_graphviz(text)
+    name = construct_cache_key(graph_text)
+    unless File.file?(graphviz_file(name, '.dot'))
       File.open(graphviz_file(name, '.dot'), 'w') do |file|
-        file.write sanitize_graphviz(text) + "\n"
+        file.write graph_text + "\n"
       end
-      `"#{settings_binary}" -T "#{frmt[:type]}" "#{graphviz_file(name, '.dot')} "-o "#{graphviz_file(name, frmt[:ext])}"`
+    end
+    unless File.file?(graphviz_file(name, frmt[:ext]))
+      `"#{settings_binary}" -T "#{frmt[:type]}" "#{graphviz_file(name, '.dot')}" -o "#{graphviz_file(name, frmt[:ext])}"`
     end
     name
   end
