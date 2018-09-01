@@ -1,4 +1,4 @@
-require_dependency 'redmine/wiki_formatting/textile/helper'
+require_dependency 'redmine/wiki_formatting/markdown/helper'
 
 module GraphvizHelperPatch
   def self.included(base) # :nodoc:

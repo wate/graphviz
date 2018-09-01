@@ -41,8 +41,7 @@ end
 Rails.configuration.to_prepare do
   # Guards against including the module multiple time (like in tests)
   # and registering multiple callbacks
-
-  unless Redmine::WikiFormatting::Textile::Helper.included_modules.include? GraphvizHelperPatch
-    Redmine::WikiFormatting::Textile::Helper.send(:include, GraphvizHelperPatch)
+  unless Redmine::WikiFormatting::Markdown::Helper.included_modules.include? GraphvizHelperPatch
+    Redmine::WikiFormatting::Markdown::Helper.send(:include, GraphvizHelperPatch)
   end
 end
