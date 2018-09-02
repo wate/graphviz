@@ -1,6 +1,4 @@
 de:
   label_plugin_settings: 'Plugin Einstellungen'
   label_allow_includes: 'Includes zulassen (ACHTUNG! Sicherheitsrisiko)'
-  label_cache_expiration: 'Cache Gültigkeit'
   label_graphviz_binary: 'Graphviz Binärdatei'
-  text_cache_expiration_unit: 'seconds'
