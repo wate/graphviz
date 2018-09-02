@@ -2,13 +2,13 @@ Redmine::Plugin.register :graphviz do
   name 'Graphviz plugin for Redmine'
   author 'Yoshiaki Tanaka'
   description 'This is a plugin for Redmine which renders Graphviz diagrams.'
-  version '0.1.0'
+  version '0.1.1'
   url 'https://github.com/wate/redmine_graphviz'
 
   requires_redmine version: '2.6'..'3.4'
 
   settings(partial: 'settings/graphviz',
-           default: { 'graphviz_binary' => {}, 'cache_seconds' => '0', 'allow_includes' => false })
+           default: { 'graphviz_binary' => {}, 'allow_includes' => false })
 
   Redmine::WikiFormatting::Macros.register do
     desc <<EOF
