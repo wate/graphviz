@@ -1,6 +1,4 @@
 ja:
   label_plugin_settings: 'プラグインの設定'
   label_allow_includes: '!includeを許可する(注意!:セキュリティリスク上のリスクがあります)'
-  label_cache_expiration: 'キャッシュの有効期限'
   label_graphviz_binary: 'dotコマンドのパス'
-  text_cache_expiration_unit: '秒'

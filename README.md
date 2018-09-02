@@ -59,7 +59,7 @@ Therefore every input will be sanitited before writing out the .dot files for fu
 
 ## TODO
 
-- add image caching
+- add test
 
 ## Acknowledge
 
