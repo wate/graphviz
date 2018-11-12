@@ -2,7 +2,7 @@ Redmine::Plugin.register :graphviz do
   name 'Graphviz plugin for Redmine'
   author 'Yoshiaki Tanaka'
   description 'This is a plugin for Redmine which renders Graphviz diagrams.'
-  version '0.2.0'
+  version '0.2.1'
   url 'https://github.com/wate/redmine_graphviz'
 
   settings(partial: 'settings/graphviz',
@@ -42,7 +42,6 @@ EOF
       {{graphviz_attach(diagram.dot, format=png)}} -- with image format
       ** Available formt options are "png" or "svg"
 EOF
-    # macro :graphviz_attach do |obj, args|
     macro :graphviz_attach do |obj, args|
       raise 'No Graphviz binary set.' if Setting.plugin_graphviz['graphviz_binary_default'].blank?
       args, options = extract_macro_options(args, :format)
