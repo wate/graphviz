@@ -1,4 +1,3 @@
 en:
   label_plugin_settings: 'Plugin settings'
-  label_allow_includes: 'Allow !include (ATTENTION! Security risk)'
   label_graphviz_binary: 'Graphviz binary'
