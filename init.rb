@@ -2,7 +2,7 @@ Redmine::Plugin.register :graphviz do
   name 'Graphviz plugin for Redmine'
   author 'Yoshiaki Tanaka'
   description 'This is a plugin for Redmine which renders Graphviz diagrams.'
-  version '0.1.1'
+  version '0.2.3'
   url 'https://github.com/wate/redmine_graphviz'
 
   requires_redmine version: '2.6'..'4.0'
@@ -13,7 +13,7 @@ Redmine::Plugin.register :graphviz do
   Redmine::WikiFormatting::Macros.register do
     desc <<EOF
       Render Graphviz image.
-      <pre>
+
       {{graphviz(png)
       digraph G {
         未対応 -> 対応中 -> 対応済み -> 完了;
@@ -23,17 +23,39 @@ Redmine::Plugin.register :graphviz do
         フィードバック -> 対応済み;
       }
       }}
-      </pre>
 
       Available options are:
       ** (png|svg)
 EOF
+
     macro :graphviz do |obj, args, text|
       raise 'No Graphviz binary set.' if Setting.plugin_graphviz['graphviz_binary_default'].blank?
       raise 'No or bad arguments.' if args.size != 1
       frmt = GraphvizHelper.check_format(args.first)
       image = GraphvizHelper.graphviz(text, args.first)
       image_tag "/graphviz/#{frmt[:type]}/#{image}#{frmt[:ext]}"
+    end
+  end
+  Redmine::WikiFormatting::Macros.register do
+    desc <<EOF
+      Render attached dot file.
+
+      {{graphviz_attach(diagram.dot)}}
+      {{graphviz_attach(diagram.dot, format=png)}} -- with image format
+      ** Available formt options are "png" or "svg"
+EOF
+    macro :graphviz_attach do |obj, args|
+      raise 'No Graphviz binary set.' if Setting.plugin_graphviz['graphviz_binary_default'].blank?
+      args, options = extract_macro_options(args, :format)
+      filename = args.first
+      raise 'Filename required' unless filename.present?
+      frmt = GraphvizHelper.check_format(options[:format])
+      if obj && obj.respond_to?(:attachments) && attachment = Attachment.latest_attach(obj.attachments, filename)
+        image = GraphvizHelper.graphviz(File.read(attachment.diskfile), frmt[:type])
+        image_tag "/graphviz/#{frmt[:type]}/#{image}#{frmt[:ext]}"
+      else
+        raise "Attachment #{filename} not found"
+      end
     end
   end
 end

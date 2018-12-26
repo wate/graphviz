@@ -1,10 +1,6 @@
 <fieldset>
   <legend><%= l(:label_plugin_settings) %></legend>
   <p>
-    <label><%= l(:label_allow_includes) %></label>
-    <%= check_box_tag 'settings[allow_includes]', 1, @settings['allow_includes'] %>
-  </p>
-  <p>
     <label><%= l(:label_graphviz_binary) %></label>
     <%= text_field_tag 'settings[graphviz_binary_default]', @settings['graphviz_binary_default'], size: 60 %>
   </p>

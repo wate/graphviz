@@ -1,4 +1,3 @@
 de:
   label_plugin_settings: 'Plugin Einstellungen'
-  label_allow_includes: 'Includes zulassen (ACHTUNG! Sicherheitsrisiko)'
   label_graphviz_binary: 'Graphviz Binärdatei'
