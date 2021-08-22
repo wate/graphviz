@@ -5,8 +5,6 @@ Redmine::Plugin.register :graphviz do
   version '0.2.3'
   url 'https://github.com/wate/redmine_graphviz'
 
-  requires_redmine version: '2.6'..'4.0'
-
   settings(partial: 'settings/graphviz',
            default: { 'graphviz_binary' => {}, 'allow_includes' => false })
 
