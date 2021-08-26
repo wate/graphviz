@@ -2,11 +2,11 @@ Redmine::Plugin.register :graphviz do
   name 'Graphviz plugin for Redmine'
   author 'Yoshiaki Tanaka'
   description 'This is a plugin for Redmine which renders Graphviz diagrams.'
-  version '0.2.3'
+  version '0.2.4'
   url 'https://github.com/wate/redmine_graphviz'
 
   settings(partial: 'settings/graphviz',
-           default: { 'graphviz_binary' => {}, 'allow_includes' => false })
+           default: { 'graphviz_binary' => '/usr/bin/dot', 'allow_includes' => false })
 
   Redmine::WikiFormatting::Macros.register do
     desc <<EOF
@@ -27,7 +27,6 @@ Redmine::Plugin.register :graphviz do
 EOF
 
     macro :graphviz do |obj, args, text|
-      raise 'No Graphviz binary set.' if Setting.plugin_graphviz['graphviz_binary_default'].blank?
       raise 'No or bad arguments.' if args.size != 1
       frmt = GraphvizHelper.check_format(args.first)
       image = GraphvizHelper.graphviz(text, args.first)
@@ -43,7 +42,6 @@ EOF
       ** Available formt options are "png" or "svg"
 EOF
     macro :graphviz_attach do |obj, args|
-      raise 'No Graphviz binary set.' if Setting.plugin_graphviz['graphviz_binary_default'].blank?
       args, options = extract_macro_options(args, :format)
       filename = args.first
       raise 'Filename required' unless filename.present?
