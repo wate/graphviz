@@ -20,7 +20,10 @@ module GraphvizHelper
 
   def self.graphviz(text, args)
     frmt = check_format(args)
-    settings_binary = Setting.plugin_graphviz['graphviz_binary_default']
+    settings_binary = '/usr/bin/dot'
+    if Setting.plugin_graphviz['graphviz_binary_default'].present?
+      settings_binary = Setting.plugin_graphviz['graphviz_binary_default']
+    end
     graph_text = sanitize_graphviz(text)
     name = construct_cache_key(graph_text)
     unless File.file?(graphviz_file(name, '.dot'))
